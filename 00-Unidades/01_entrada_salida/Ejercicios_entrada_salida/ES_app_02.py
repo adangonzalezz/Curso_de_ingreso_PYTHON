@@ -28,7 +28,8 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         pass
-        
+        Nombre = prompt(title="como te llamas papu¿?", prompt="tu name?")
+        alert(title="Alerta", message="Que onda pa, te llamas " + Nombre )
         
     
 if __name__ == "__main__":

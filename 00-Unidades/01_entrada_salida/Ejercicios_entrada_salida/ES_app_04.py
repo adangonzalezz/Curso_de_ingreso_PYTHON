@@ -34,8 +34,12 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         pass
-        
-    
+        Texto= prompt(title="como te llamas¿?", prompt="decime tu nombre pa")
+        self.txt_nombre.delete(0,145)
+        self.txt_nombre.insert(0,Texto)    
+        #Nombre = self.txt_nombre.get()
+        #alert("hola", Nombre)
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
