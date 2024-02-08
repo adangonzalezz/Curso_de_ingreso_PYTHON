@@ -40,9 +40,48 @@ class App(customtkinter.CTk):
 
     def btn_sumar_on_click(self):
         pass
-     
+        Num_1 = self.txt_operador_a.get()
+        Num_1_N = int(Num_1)
+
+        Num_2 = self.txt_operador_b.get()
+        Num_2_N = int(Num_2)
+
+        Resultado = Num_1_N + Num_2_N
+        #Num_Texto = str(Resultado)
+
+        Mensaje = "El resultado es {0}".format(Resultado)
+        #Mensaje = "El resultado es " + Num_Texto
         
+        alert("EJ 6", Mensaje )
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
     app.mainloop()
+
+
+    '''
+
+
+    si la suma no se muestra en el alert al usar el + , se debe de volver al texto con str()
+    
+    el numero se puede convertir en numero en una sola linea ya q poniendo el int antes del self.txt_operador_a.get() se trans forma en un numero
+
+    string = cadena de carectos             convertir a texto   str(resulto)
+    int = numeros enteros                   convertir a numeros int(numero_uno)
+    float = numeros decimales               convertir a decimal float(numero_uno)
+
+    El = sirver para  asignar
+
+    El + sirve ára sumar y concatenar
+
+    El - siver para restar
+
+    El * sirve para  multiplicar
+
+    El 7 sirve para dividir
+    
+    El % sirve para mostrar el resto de una divicion ( es el modulo)
+    
+    '''
