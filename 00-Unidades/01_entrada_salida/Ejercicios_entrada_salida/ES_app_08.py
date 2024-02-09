@@ -40,11 +40,11 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        Num_1 = int(self.txt_operador_a.get())
-        Num_2 = int(self.txt_operador_b.get())
-        rDiv = Num_1 % Num_2
-        Res_rdiv = "El resto de la divicion de {0} y {1} es : {2}".format(Num_1,Num_2,rDiv)
-        alert("Resultado", Res_rdiv)
+        num_1 = int(self.txt_operador_a.get())
+        num_2 = int(self.txt_operador_b.get())
+        r_div = num_1 % num_2
+        res_r_div = "El resto de la divicion de {0} y {1} es : {2}".format(num_1,num_2,r_div)
+        alert("Resultado", res_r_div)
         
         
     

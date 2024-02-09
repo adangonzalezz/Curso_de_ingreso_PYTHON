@@ -49,32 +49,32 @@ class App(customtkinter.CTk):
         self.btn_dividir.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_sumar_on_click(self):
-        Num_1 = int(self.txt_operador_a.get())
-        Num_2 = int(self.txt_operador_b.get())
-        Suma = Num_1 + Num_2
-        Res_suma = "El resultado de la Suma es : {}".format(Suma)
-        alert("Resultado", Res_suma)
+        num_1 = int(self.txt_operador_a.get())
+        num_2 = int(self.txt_operador_b.get())
+        suma = num_1 + num_2
+        res_suma = "El resultado de la Suma es : {}".format(suma)
+        alert("Resultado", res_suma)
 
     def btn_restar_on_click(self):
-        Num_1 = int(self.txt_operador_a.get())
-        Num_2 = int(self.txt_operador_b.get())
-        Resta = Num_1 - Num_2
-        Res_resta = "El resultado de la Resta es : {}".format(Resta)
-        alert("Resultado", Resta)
+        num_1 = int(self.txt_operador_a.get())
+        num_2 = int(self.txt_operador_b.get())
+        resta = num_1 - num_2
+        res_resta = "El resultado de la Resta es : {}".format(resta)
+        alert("Resultado", res_resta)
 
     def btn_multiplicar_on_click(self):
-        Num_1 = int(self.txt_operador_a.get())
-        Num_2 = int(self.txt_operador_b.get())
-        Multi = Num_1 * Num_2
-        Res_multi =  "El resultado de la Multiplicacion es : {}".format(Multi)
-        alert("Resultado", Res_multi)
+        num_1= int(self.txt_operador_a.get())
+        num_2 = int(self.txt_operador_b.get())
+        multi = num_1 * num_2
+        res_multi =  "El resultado de la Multiplicacion es : {}".format(multi)
+        alert("Resultado", res_multi)
 
     def btn_dividir_on_click(self):
-        Num_1 = int(self.txt_operador_a.get())
-        Num_2 = int(self.txt_operador_b.get())
-        Div = Num_1 / Num_2
-        Res_div = "El resultadp de la Divicion es : {}".format(Div)
-        alert("Resultado", Res_div)
+        num_1 = int(self.txt_operador_a.get())
+        num_2 = int(self.txt_operador_b.get())
+        div = num_1 / num_2
+        res_div = "El resultadp de la Divicion es : {}".format(div)
+        alert("Resultado", res_div)
         
 if __name__ == "__main__":
     app = App()
