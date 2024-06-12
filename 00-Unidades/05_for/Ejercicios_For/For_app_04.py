@@ -26,8 +26,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
-        
+        #valores = prompt("", "valor")
+        bandera = False
+
+        for i in range(1,10):
+            valores = prompt("", "valor")
+            bandera = True
+            break
+            
     
 if __name__ == "__main__":
     app = App()

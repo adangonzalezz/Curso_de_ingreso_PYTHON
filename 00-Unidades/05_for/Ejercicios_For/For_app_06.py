@@ -27,8 +27,16 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
-        
+        numero = prompt("", "ponete un numerito")
+        numero = int(numero)
+        contador = 0
+
+        for i in range(1,numero+1):
+            if numero % i == 0:
+                contador += 1
+                alert("", "el numero {} es divisible por {}".format(numero, i))
+
+        alert("", "la cantidad de divisores es {}".format(contador))
     
 if __name__ == "__main__":
     app = App()

@@ -27,7 +27,8 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        num_alt = random.randint(1, 10)
+        alert("Ej_9", num_alt)
         
 
 if __name__ == "__main__":

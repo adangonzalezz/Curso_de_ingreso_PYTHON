@@ -39,7 +39,24 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        altura = int(self.txt_altura.get())
+
+        if altura < 160 :
+            alert("Ej_6_bis", "Usted juega de Base")
+
+        else :
+            if altura >= 160 and altura < 180 :
+                alert("Ej_6_bis", "Usted juega de Escolta")
+            
+            else :
+                if altura >= 180 and altura < 200 :
+                    alert("Ej_6_bis", "Usted juega de Alero")
+                
+                else :
+                    if altura >= 200 :
+                        alert("Ej_6_bis", "Usted juega de Ala-Pívot o Pívot")
+
+
 
         
         

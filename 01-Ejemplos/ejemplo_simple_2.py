@@ -1,71 +1,133 @@
+import tkinter
+from tkinter.messagebox import showinfo as alert
+from tkinter.messagebox import askyesno as question
+from tkinter.simpledialog import askstring as prompt
 import customtkinter
+import math
 
-customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+'''
+nombre: Adan Yael 
+apellido: Gonzalez Arias
+---
+De los 50 participantes del torneo de UTN-TETRIS, se debe ingresar los siguientes datos:
 
-app = customtkinter.CTk()
-app.geometry("400x780")
-app.title("CustomTkinter simple_example.py")
+Nombre
+Categoría (Principiante - Intermedio - Avanzado)
+Edad (entre 18 y 99 inclusive)
+Score (mayor que 0)
+Nivel alcanzado (1 , 2 o 3)
 
-def button_callback():
-    print("Button click", combobox_1.get())
+Pedir datos por prompt y mostrar por print, se debe informar:
+
+    Informe A- Cuál es la categoría que tiene más participantes.
+    Informe B- El Porcentaje de jugadores de la categoría avanzado sobre el total
+    Informe C- La categoría del participante de menor Score
+    Informe D- El score y nombre del avanzado con mayor edad
+    Informe E- Promedio de score de los participantes principiantes.
+
+'''
+
+class App(customtkinter.CTk):
+
+    def __init__(self):
+        super().__init__()
+
+        self.title("UTN FRA")
+
+        self.btn_mostrar = customtkinter.CTkButton(
+            master=self, text="Mostrar", command=self.btn_mostrar_on_click)
+        self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
+
+    def btn_mostrar_on_click(self):
+        seguir = True
+
+        contador_pr = 0
+        contador_int = 0
+        contador_av = 0
+
+        score_min = 0
+        bandera_min = False
+        categoria_min = ""
+
+        edad_av = 0
+        score_av = 0
+        nombre_av = ""
+        bandera_av = False
+
+        score_pr = 0
+        promedio_score_pr = 0
 
 
-def slider_callback(value):
-    progressbar_1.set(value)
+        while seguir == True:
+            nombre = prompt("", "Ingrese su nombre")
+
+            categoria = prompt("", "Ingrese su categoria")
+            while categoria != "Principiante" and categoria != "Intermedio" and categoria != "Avanzado":
+                categoria = prompt("", "Reingrese su categoria")
+
+            edad = int(prompt("", "Ingrese su edad"))
+            while edad < 18 or edad > 99:
+                edad = int(prompt("", "Reingrese su edad"))
+
+            score = int(prompt("", "Ingrese su score"))
+            while score <= 0:
+                score = int(prompt("", "Reingrese su score"))
+
+            Nivel = int(prompt("", "Ingrese su Nivel"))
+            while Nivel != 1 and Nivel != 2 and Nivel != 3:
+                Nivel = int(prompt("", "Reingrese su Nivel"))
+
+            match categoria:
+                case "Principiante":
+                    contador_pr += 1
+                    score_pr += score
+                case "Intermedio":
+                    contador_int += 1
+                case _:
+                    contador_av += 1
+
+            if score < score_min or bandera_min == False:
+                score_min = score
+                categoria_min = categoria
+                bandera_min = True
+
+            if categoria == "Avanzado" and (edad > edad_av or bandera_av == False):
+                nombre_av = nombre
+                score_av = score
+                edad_av = edad
+                bandera_av = True
 
 
-frame_1 = customtkinter.CTkFrame(master=app)
-frame_1.pack(pady=20, padx=60, fill="both", expand=True)
 
-label_1 = customtkinter.CTkLabel(master=frame_1, justify=customtkinter.LEFT)
-label_1.pack(pady=10, padx=10)
+            seguir = question("", "Desea ingresar otro participante?")
 
-progressbar_1 = customtkinter.CTkProgressBar(master=frame_1)
-progressbar_1.pack(pady=10, padx=10)
+        if contador_pr > contador_int and contador_pr > contador_av:
+            mas_participantes = "La categoria con mas participantes es la Principiante"
+        elif contador_int > contador_pr and contador_int > contador_av:
+            mas_participantes = "La categoria con mas participantes es la Intermedia"
+        else:
+            mas_participantes = "La categoria con mas participantes es la Avanzada"
 
-button_1 = customtkinter.CTkButton(master=frame_1, command=button_callback)
-button_1.pack(pady=10, padx=10)
+        total_participantes = contador_pr + contador_int + contador_av
+        promedio_av = (contador_av * 100) / total_participantes
 
-slider_1 = customtkinter.CTkSlider(master=frame_1, command=slider_callback, from_=0, to=1)
-slider_1.pack(pady=10, padx=10)
-slider_1.set(0.5)
+        if categoria == "Principiante":
+            promedio_score_pr = (score_pr / contador_pr)
+            if promedio_score_pr == 0:
+                promedio_score_pr = score_pr
 
-entry_1 = customtkinter.CTkEntry(master=frame_1, placeholder_text="CTkEntry")
-entry_1.pack(pady=10, padx=10)
 
-optionmenu_1 = customtkinter.CTkOptionMenu(frame_1, values=["Option 1", "Option 2", "Option 42 long long long..."])
-optionmenu_1.pack(pady=10, padx=10)
-optionmenu_1.set("CTkOptionMenu")
+        print("A. {}".format(mas_participantes))
+        print("B. El porcentaje de participantes avanzados es de {0}".format(promedio_av))
+        print("C. La categoría del participante de menor Score es {0}".format(categoria_min))
+        print("D. El participante Avanzado con mas edad tiene un Score de {0} y se llama {1}".format(score_av, nombre_av))
+        print("E. El Score promedio de los participantes principiantes es de {0}".format(promedio_score_pr))
 
-combobox_1 = customtkinter.CTkComboBox(frame_1, values=["Option 1", "Option 2", "Option 42 long long long..."])
-combobox_1.pack(pady=10, padx=10)
-combobox_1.set("CTkComboBox")
 
-checkbox_1 = customtkinter.CTkCheckBox(master=frame_1)
-checkbox_1.pack(pady=10, padx=10)
 
-radiobutton_var = customtkinter.IntVar(value=1)
 
-radiobutton_1 = customtkinter.CTkRadioButton(master=frame_1, variable=radiobutton_var, value=1)
-radiobutton_1.pack(pady=10, padx=10)
 
-radiobutton_2 = customtkinter.CTkRadioButton(master=frame_1, variable=radiobutton_var, value=2)
-radiobutton_2.pack(pady=10, padx=10)
-
-switch_1 = customtkinter.CTkSwitch(master=frame_1)
-switch_1.pack(pady=10, padx=10)
-
-text_1 = customtkinter.CTkTextbox(master=frame_1, width=200, height=70)
-text_1.pack(pady=10, padx=10)
-text_1.insert("0.0", "CTkTextbox\n\n\n\n")
-
-segmented_button_1 = customtkinter.CTkSegmentedButton(master=frame_1, values=["CTkSegmentedButton", "Value 2"])
-segmented_button_1.pack(pady=10, padx=10)
-
-tabview_1 = customtkinter.CTkTabview(master=frame_1, width=200, height=70)
-tabview_1.pack(pady=10, padx=10)
-tabview_1.add("CTkTabview")
-tabview_1.add("Tab 2")
-
-app.mainloop()
+if __name__ == "__main__":
+    app = App()
+    app.geometry("300x300")
+    app.mainloop()

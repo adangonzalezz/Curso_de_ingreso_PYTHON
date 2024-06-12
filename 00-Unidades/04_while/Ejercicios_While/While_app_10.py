@@ -37,7 +37,23 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        contador_neg = 0
+
+        while True : 
+            numero = prompt("hola", "ingrese un numero, o cancelar para salir")
+            if numero == None :
+                break
+            numero = int(numero)
+
+            if numero < 0:
+
+                contador_neg = contador_neg + 1
+                
+        mensaje = "la cantidad de numeros negativos es {0}".format(contador_neg)
+        alert("a", mensaje)
+
+
+
 
     
 if __name__ == "__main__":

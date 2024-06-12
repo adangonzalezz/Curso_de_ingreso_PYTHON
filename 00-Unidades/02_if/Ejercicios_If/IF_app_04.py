@@ -34,10 +34,47 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        pass
+        edad = int(self.txt_edad.get())
+
+        if edad > 12 and edad < 18:
+            #if edad < 18:
+                alert("ej4", "Es adolecente")
 
 
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
     app.mainloop()
+
+
+
+
+'''
+
+operadores logicos
+
+and     
+or      
+not     
+
+si tenes mas de 12 años y tenes menos de 18 años
+    sos adolecente
+
+
+    tablas de verdad
+        AND
+    V  +   V  =   V 
+    V  +   F  =   F
+    F  +   V  =   F
+    F  +   F  =   F
+
+        OR
+    V  +   V  =   V
+    V  +   F  =   V
+    F  +   V  =   V
+    F  +   F  =   F
+
+        NOT
+    cambia el resultado de verdadero a falso y de falso a verdadero
+
+'''
